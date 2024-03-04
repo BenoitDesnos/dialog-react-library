@@ -1,17 +1,17 @@
 {
-  "name": "dialog-react-library",
-  "private": true,
+  "name": "dialog-react-library-bd",
+  "private": false,
   "version": "0.0.0",
   "type": "module",
   "files": [
     "dist"
   ],
-  "main": "dist/dialog-react-library-umd.cjs",
-  "module": "dist/dialog-react-library.js",
+  "main": "dist/dialog-react-library-bd-umd.cjs",
+  "module": "dist/dialog-react-library-bd.js",
   "exports": {
     ".": {
-      "import": "./dist/dialog-react-library.js",
-      "require": "./dist/dialog-react-library-umd.cjs"
+      "import": "./dist/dialog-react-library-bd.js",
+      "require": "./dist/dialog-react-library-bd-umd.cjs"
     }
   },
   "scripts": {

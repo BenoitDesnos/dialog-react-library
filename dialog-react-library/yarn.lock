@@ -5814,9 +5814,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"dialog-react-library@workspace:.":
+"dialog-react-library-bd@workspace:.":
   version: 0.0.0-use.local
-  resolution: "dialog-react-library@workspace:."
+  resolution: "dialog-react-library-bd@workspace:."
   dependencies:
     "@storybook/addon-essentials": "npm:^7.6.17"
     "@storybook/addon-interactions": "npm:^7.6.17"

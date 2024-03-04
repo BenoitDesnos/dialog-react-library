@@ -13,8 +13,8 @@ export default defineConfig({
   build: {
     lib: {
       entry: path.resolve(__dirname, "src/components/index.tsx"),
-      name: "dialog-react-library",
-      fileName: "dialog-react-library",
+      name: "dialog-react-library-bd",
+      fileName: "dialog-react-library-bd",
     },
 
     rollupOptions: {
