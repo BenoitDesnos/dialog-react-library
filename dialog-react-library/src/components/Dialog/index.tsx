@@ -1,6 +1,7 @@
-import { cn } from "@/utils";
 import { ComponentProps, useRef } from "react";
 import { Button } from "..";
+import clsx, { ClassValue } from "clsx";
+import { twMerge } from "tailwind-merge";
 
 type dialogProps = ComponentProps<"dialog">;
 type CustomDialogProps = dialogProps & {
@@ -8,6 +9,8 @@ type CustomDialogProps = dialogProps & {
   triggerName?: string;
   // add as many custom props as you need
 };
+
+const cn = (...classes: ClassValue[]) => twMerge(clsx(classes));
 
 export const Dialog = ({
   triggerName,
