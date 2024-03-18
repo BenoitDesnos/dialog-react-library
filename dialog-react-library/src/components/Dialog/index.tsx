@@ -34,7 +34,7 @@ export const Dialog = ({
         className={cn("backdrop:bg-black/100 min-w-96", className)}
         {...props}
       >
-        <div className="dialog-content bg-white  pr-6 p-4">
+        <div className=" bg-green-500  pr-6 p-4">
           {props.children}
           <div>
             <button
