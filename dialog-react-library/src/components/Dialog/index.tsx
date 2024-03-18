@@ -28,7 +28,7 @@ export const Dialog = ({
       <dialog
         ref={dialogRef}
         id="dialog"
-        className={cn("backdrop:bg-black/50 min-w-96 rounded-md ", className)}
+        className={cn("backdrop:bg-black/100 min-w-96", className)}
         {...props}
       >
         <div className="dialog-content bg-white  pr-6 p-4">
@@ -59,7 +59,7 @@ export const Dialog = ({
       </dialog>
       <Button
         triggerFn={showModal}
-        className={cn("bg-slate-900 text-white", classNameTrigger)}
+        className={cn("bg-red-700 text-sky-500", classNameTrigger)}
       >
         {triggerName || "Open Dialog"}
       </Button>

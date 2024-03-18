@@ -17,7 +17,7 @@ export const Default: Story = {
   args: {
     className: "bg-gray-500",
     children: <p>Dialog content</p>,
-    classNameTrigger: "bg-blue-500",
+    classNameTrigger: "",
     triggerName: "Open",
   },
 };
