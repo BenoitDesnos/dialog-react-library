@@ -33,7 +33,7 @@ export const Dialog = ({
       >
         <div className="dialog-content bg-white  pr-6 p-4">
           {props.children}
-          <div className="dialog-footer">
+          <div>
             <button
               autoFocus
               onClick={closeModal}
