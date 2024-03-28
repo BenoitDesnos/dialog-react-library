@@ -1,20 +1,22 @@
 import { ComponentProps, useRef } from "react";
-import { Button } from "..";
 import clsx, { ClassValue } from "clsx";
 import { twMerge } from "tailwind-merge";
-
 type dialogProps = ComponentProps<"dialog">;
 type CustomDialogProps = dialogProps & {
-  classNameTrigger?: string;
-  triggerName?: string;
+  triggerFn: () => void;
+  buttonClass?: string;
+  buttonType?: "button" | "submit" | "reset";
+  buttonLabel?: string;
   // add as many custom props as you need
 };
 
 const cn = (...classes: ClassValue[]) => twMerge(clsx(classes));
 
 export const Dialog = ({
-  triggerName,
-  classNameTrigger,
+  triggerFn,
+  buttonLabel,
+  buttonClass,
+  buttonType = "submit",
   className,
   ...props
 }: CustomDialogProps) => {
@@ -31,15 +33,21 @@ export const Dialog = ({
       <dialog
         ref={dialogRef}
         id="dialog"
-        className={cn("backdrop:bg-black/100 min-w-96", className)}
+        className={cn(
+          "backdrop:bg-black/50 backdrop-blur-md min-w-96 rounded-md",
+          className
+        )}
         {...props}
       >
-        <div className=" bg-green-500  pr-6 p-4">
+        <div className="pr-6 p-4">
           {props.children}
           <div>
             <button
               autoFocus
-              onClick={closeModal}
+              onClick={(e) => {
+                e.preventDefault();
+                closeModal();
+              }}
               className="absolute top-1 right-1"
             >
               <svg
@@ -60,12 +68,20 @@ export const Dialog = ({
           </div>
         </div>
       </dialog>
-      <Button
-        triggerFn={showModal}
-        className={cn("bg-red-700 text-sky-500", classNameTrigger)}
+      <button
+        onClick={(e) => {
+          e.preventDefault();
+          triggerFn();
+          showModal();
+        }}
+        type={buttonType}
+        className={cn(
+          "bg-slate-100 pl-3 pr-3 rounded-md hover:bg-slate-300 transition-all duration-200",
+          buttonClass
+        )}
       >
-        {triggerName || "Open Dialog"}
-      </Button>
+        {buttonLabel || "Open Dialog"}
+      </button>
     </>
   );
 };

@@ -1,2 +1,3 @@
-export { Button } from "./Button";
+import "../index.css";
+
 export { Dialog } from "./Dialog";

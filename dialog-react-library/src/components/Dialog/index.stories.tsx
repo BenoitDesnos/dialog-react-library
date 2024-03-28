@@ -15,9 +15,9 @@ type Story = StoryObj<typeof Dialog>;
 
 export const Default: Story = {
   args: {
-    className: "bg-gray-500",
+    className: "",
     children: <p>Dialog content</p>,
-    classNameTrigger: "",
-    triggerName: "Open",
+    buttonLabel: "",
+    buttonClass: "Open",
   },
 };

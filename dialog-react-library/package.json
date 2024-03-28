@@ -1,6 +1,6 @@
 {
   "name": "dialog-react-library-bd",
-  "version": "0.0.8",
+  "version": "0.0.26",
   "type": "module",
   "files": [
     "dist"
@@ -11,6 +11,10 @@
     ".": {
       "import": "./dist/dialog-react-library-bd.js",
       "require": "./dist/dialog-react-library-bd-umd.cjs"
+    },
+    "./style.css": {
+      "import": "./dist/style.css",
+      "require": "./dist/style.css"
     }
   },
   "scripts": {
