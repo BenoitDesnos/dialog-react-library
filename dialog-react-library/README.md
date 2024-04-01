@@ -1,8 +1,8 @@
-This library allow you to create dialogs using last html accessibility functionnalities and it's build on top of tailwind css.
+This library allow you to create dialogs using last html accessibility functionnalities and it's build using tailwind css.
 
 The dialog component provided comes in with basic CSS that you can use anywhere in your app by importing ```import "dialog-react-library-bd/style.css"```
 
-you can either override part of that style by using classNames or just ignore that import and make your style from scratch using tailwind or any type of CSS.
+you can either override part of that style by using className prop or just ignore that import and make your style from scratch using tailwind or any type of CSS.
 
 The dialog component include open and close functionnalities using html dialog functions.
 
