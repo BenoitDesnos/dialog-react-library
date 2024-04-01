@@ -23,7 +23,7 @@ export const Default: Story = {
       onClick: () => {
         console.log("test");
       },
-      className: "bg-slate-500",
+      className: "bg-slate-200",
     },
   },
 };
