@@ -1,30 +1,39 @@
-# React + TypeScript + Vite
+This library allow you to create dialogs using last html accessibility functionnalities and it's build on top of tailwind css.
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+The dialog component provided comes in with basic CSS that you can use anywhere in your app by importing ```import "dialog-react-library-bd/style.css"```
 
-Currently, two official plugins are available:
+you can either override part of that style by using classNames or just ignore that import and make your style from scratch using tailwind or any type of CSS.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+The dialog component include open and close functionnalities using html dialog functions.
 
-## Expanding the ESLint configuration
+you can use the dialog component anywhere in your code and it will display the open button.
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+here is an usage example : 
 
-- Configure the top-level `parserOptions` property like this:
-
-```js
-export default {
-  // other rules...
-  parserOptions: {
-    ecmaVersion: 'latest',
-    sourceType: 'module',
-    project: ['./tsconfig.json', './tsconfig.node.json'],
-    tsconfigRootDir: __dirname,
-  },
-}
+``` jsx
+`<Dialog
+        triggerFn={form.handleSubmit(onSubmit, onError)}
+        className={""}
+        buttonClass={"text-black mt-6"}
+        buttonLabel={"Submit"}
+      >
+        {
+          // error message
+          isError ? (
+            <p className="text-red-500">
+              There was an error creating the employee.
+            </p>
+          ) : (
+            <p>Employee Created!</p>
+          )
+        }
+  </Dialog>
 ```
 
-- Replace `plugin:@typescript-eslint/recommended` to `plugin:@typescript-eslint/recommended-type-checked` or `plugin:@typescript-eslint/strict-type-checked`
-- Optionally add `plugin:@typescript-eslint/stylistic-type-checked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and add `plugin:react/recommended` & `plugin:react/jsx-runtime` to the `extends` list
+
+
+
+| Name            | Type    | Default | Description                                                                                 |
+|-----------------|---------|---------|---------------------------------------------------------------------------------------------|
+| autoComplete    | string  | -       | This prop helps users to fill forms faster, especially on mobile devices. The name can be confusing, as it's more like an autofill. You can learn more about it following the [specification](#). |
+| autoFocus       | bool    | false   | If true, the input element is focused during the first mount.                              |

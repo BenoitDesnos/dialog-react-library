@@ -18,6 +18,12 @@ export const Default: Story = {
     className: "",
     children: <p>Dialog content</p>,
     buttonLabel: "",
-    buttonClass: "Open",
+    openButtonProps: {
+      type: "button",
+      onClick: () => {
+        console.log("test");
+      },
+      className: "bg-slate-500",
+    },
   },
 };

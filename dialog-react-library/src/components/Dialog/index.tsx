@@ -2,22 +2,22 @@ import { ComponentProps, useRef } from "react";
 import clsx, { ClassValue } from "clsx";
 import { twMerge } from "tailwind-merge";
 type dialogProps = ComponentProps<"dialog">;
+type buttonProps = ComponentProps<"button">;
+
 type CustomDialogProps = dialogProps & {
-  triggerFn: () => void;
-  buttonClass?: string;
   buttonType?: "button" | "submit" | "reset";
   buttonLabel?: string;
-  // add as many custom props as you need
+  openButtonProps?: buttonProps;
+  closeButtonProps?: buttonProps;
 };
 
 const cn = (...classes: ClassValue[]) => twMerge(clsx(classes));
 
 export const Dialog = ({
-  triggerFn,
   buttonLabel,
-  buttonClass,
-  buttonType = "submit",
   className,
+  openButtonProps,
+  closeButtonProps,
   ...props
 }: CustomDialogProps) => {
   const dialogRef = useRef<HTMLDialogElement | null>(null);
@@ -27,6 +27,24 @@ export const Dialog = ({
   const closeModal = () => {
     dialogRef.current?.close();
   };
+
+  const handleClick = (callback: () => void) => {
+    return (
+        userOnClick?: (
+          event: React.MouseEvent<HTMLButtonElement, MouseEvent>
+        ) => void
+      ) =>
+      (event: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
+        event.preventDefault();
+        callback();
+        if (typeof userOnClick === "function") {
+          userOnClick(event);
+        }
+      };
+  };
+
+  const handleOpenClick = handleClick(showModal);
+  const handleCloseClick = handleClick(closeModal);
 
   return (
     <>
@@ -43,12 +61,14 @@ export const Dialog = ({
           {props.children}
           <div>
             <button
+              {...closeButtonProps}
               autoFocus
-              onClick={(e) => {
-                e.preventDefault();
-                closeModal();
-              }}
-              className="absolute top-1 right-1"
+              onClick={handleCloseClick(closeButtonProps?.onClick)}
+              type={openButtonProps?.type || "button"}
+              className={cn(
+                "absolute top-1 right-1",
+                closeButtonProps?.className
+              )}
             >
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -69,15 +89,12 @@ export const Dialog = ({
         </div>
       </dialog>
       <button
-        onClick={(e) => {
-          e.preventDefault();
-          triggerFn();
-          showModal();
-        }}
-        type={buttonType}
+        {...openButtonProps}
+        onClick={handleOpenClick(openButtonProps?.onClick)}
+        type={openButtonProps?.type || "submit"}
         className={cn(
           "bg-slate-100 pl-3 pr-3 rounded-md hover:bg-slate-300 transition-all duration-200",
-          buttonClass
+          openButtonProps?.className
         )}
       >
         {buttonLabel || "Open Dialog"}
